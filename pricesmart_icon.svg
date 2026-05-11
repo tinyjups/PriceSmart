@@ -1,0 +1,45 @@
+<svg width="512" height="512" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <clipPath id="rc"><rect width="680" height="680" rx="130"/></clipPath>
+  <clipPath id="bagC"><rect x="155" y="295" width="370" height="330" rx="22"/></clipPath>
+</defs>
+
+<!-- Fondo azul -->
+<rect width="680" height="680" rx="130" fill="#2B6CB8"/>
+
+<!-- Franja verde inferior -->
+<rect x="0" y="460" width="680" height="220" rx="0" fill="#2E9E4F" clip-path="url(#rc)"/>
+<rect x="0" y="505" width="680" height="175" rx="0" fill="#1E7A38" clip-path="url(#rc)"/>
+<rect x="0" y="458" width="680" height="6" fill="#187A30" clip-path="url(#rc)"/>
+
+<!-- Sombra bolsa -->
+<rect x="168" y="308" width="370" height="330" rx="22" fill="#0A1A40" opacity="0.22"/>
+
+<!-- Cuerpo bolsa celeste -->
+<rect x="155" y="295" width="370" height="330" rx="22" fill="#5BC8F5"/>
+
+<!-- Franja superior roja -->
+<rect x="155" y="295" width="370" height="58" rx="0" fill="#E02020" clip-path="url(#bagC)"/>
+<rect x="155" y="349" width="370" height="6" fill="#B01010"/>
+
+<!-- Plano de luz Hockney -->
+<rect x="155" y="355" width="90" height="270" rx="0" fill="#7DD8FF" opacity="0.38" clip-path="url(#bagC)"/>
+
+<!-- Franjas laterales rojas -->
+<rect x="155" y="355" width="12" height="270" rx="0" fill="#E02020" clip-path="url(#bagC)"/>
+<rect x="513" y="355" width="12" height="270" rx="0" fill="#E02020" clip-path="url(#bagC)"/>
+
+<!-- Base bolsa -->
+<rect x="155" y="575" width="370" height="50" rx="0" fill="#3AAAD8" clip-path="url(#bagC)"/>
+<rect x="155" y="573" width="370" height="4" fill="#2A90BE" opacity="0.6"/>
+
+<!-- Un solo asa centrada -->
+<path d="M255,295 Q255,140 340,118 Q425,140 425,295"
+      fill="none" stroke="#FFFFFF" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M255,295 Q255,140 340,118 Q425,140 425,295"
+      fill="none" stroke="#C8EEFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+
+<!-- Borde bolsa -->
+<rect x="155" y="295" width="370" height="330" rx="22"
+      fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.45"/>
+</svg>
