@@ -3,88 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
-<title>Lista del Súper</title>
+<title>PriceSmart</title>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Lista Súper">
-<meta name="theme-color" content="#3B6D11">
+<meta name="apple-mobile-web-app-title" content="PriceSmart">
+<meta name="theme-color" content="#2B6CB8">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" type="image/png" href="icon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:#f7f5f0;color:#2c2c2a;min-height:100vh}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f0f4fa;color:#1a2a3a;min-height:100vh}
 :root{
-  --green:#3B6D11;--green-l:#EAF3DE;--green-m:#639922;
+  --blue:#2B6CB8;--blue-l:#EBF2FB;
+  --red:#C0392B;--red-l:#FDECEA;
+  --green:#1E7A38;--green-l:#E4F5EA;
   --amber:#BA7517;--amber-l:#FAEEDA;
-  --coral:#993C1D;--blue:#185FA5;--blue-l:#E6F1FB;
-  --purple:#534AB7;--red:#A32D2D;--red-l:#FCEBEB;
-  --gray:#5F5E5A;--gray-l:#F1EFE8;--border:#d3d1c7
+  --purple:#534AB7;--purple-l:#EEEDFE;
+  --gray:#5F5E5A;--gray-l:#F1EFE8;
+  --border:#cdd5e0
 }
 .app{max-width:980px;margin:0 auto;padding:12px}
 .header{background:#fff;border:0.5px solid var(--border);border-radius:14px;padding:14px 18px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{width:38px;height:38px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;flex-shrink:0}
+.logo{width:38px;height:38px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;flex-shrink:0}
 .h-title{font-size:19px;font-weight:600}
 .h-sub{font-size:11px;color:#999;margin-top:1px}
-.week-badge{background:var(--green-l);color:var(--green);font-size:12px;font-weight:500;padding:5px 11px;border-radius:20px;white-space:nowrap}
+.week-badge{background:var(--blue-l);color:var(--blue);font-size:12px;font-weight:500;padding:5px 11px;border-radius:20px;white-space:nowrap}
 .sync-dot{width:8px;height:8px;border-radius:50%;background:#ccc;flex-shrink:0;transition:background .3s}
 .sync-dot.syncing{background:#f0a500;animation:pulse .8s infinite}
-.sync-dot.ok{background:#3B6D11}
-.sync-dot.err{background:#A32D2D}
+.sync-dot.ok{background:#1E7A38}
+.sync-dot.err{background:#C0392B}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .sync-label{font-size:10px;color:#aaa}
 .nav-tabs{display:flex;gap:4px;background:#fff;border:0.5px solid var(--border);border-radius:12px;padding:4px;margin-bottom:10px}
 .nav-tab{flex:1;padding:8px 4px;border:none;background:transparent;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;color:#888;display:flex;align-items:center;justify-content:center;gap:5px;transition:all .15s}
-.nav-tab.active{background:var(--green);color:#fff}
+.nav-tab.active{background:var(--blue);color:#fff}
 .nav-tab i{font-size:15px}
 .panel{display:none}.panel.active{display:block}
 .toolbar{background:#fff;border:0.5px solid var(--border);border-radius:12px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.dest-filter{display:flex;gap:5px;flex-wrap:wrap}
-.dest-btn{padding:5px 11px;border-radius:20px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:12px;font-weight:500;display:flex;align-items:center;gap:3px;transition:all .15s;white-space:nowrap}
-.dest-btn.act-casa{background:var(--blue-l);border-color:var(--blue);color:var(--blue)}
-.dest-btn.act-chicas{background:var(--amber-l);border-color:var(--amber);color:var(--amber)}
-.dest-btn.act-jardin{background:var(--green-l);border-color:var(--green);color:var(--green)}
 .search-w{flex:1;min-width:140px;position:relative}
 .search-w i{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:#bbb;font-size:15px}
-.search-inp{width:100%;padding:6px 9px 6px 30px;border:0.5px solid var(--border);border-radius:8px;font-size:13px;background:#f7f5f0;outline:none}
-.search-inp:focus{border-color:var(--green);background:#fff}
+.search-inp{width:100%;padding:6px 9px 6px 30px;border:0.5px solid var(--border);border-radius:8px;font-size:13px;background:#f0f4fa;outline:none}
+.search-inp:focus{border-color:var(--blue);background:#fff}
 .print-btn{padding:6px 13px;border-radius:8px;border:0.5px solid var(--border);background:#fff;cursor:pointer;font-size:12px;display:flex;align-items:center;gap:5px;font-weight:500;color:#555;white-space:nowrap}
-.print-btn:hover{background:#f7f5f0}
+.print-btn:hover{background:#f0f4fa}
 .sum-bar{background:#fff;border:0.5px solid var(--border);border-radius:12px;padding:11px 15px;margin-bottom:8px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .sum-s{display:flex;flex-direction:column;gap:1px}
 .sum-lbl{font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:.5px}
 .sum-val{font-size:19px;font-weight:600}
-.sum-val.g{color:var(--green)}
+.sum-val.b{color:var(--blue)}
 .sdiv{width:1px;background:var(--border);height:32px}
-.btn-confirm{background:var(--green);color:#fff;border:none;border-radius:8px;padding:8px 15px;font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:5px;margin-left:auto;white-space:nowrap}
+.btn-confirm{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:8px 15px;font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:5px;margin-left:auto;white-space:nowrap}
 .btn-confirm:hover{opacity:.88}
 .cat-grid{columns:3;column-gap:8px}
 .cat-card{background:#fff;border:0.5px solid var(--border);border-radius:12px;overflow:hidden;break-inside:avoid;margin-bottom:8px;display:inline-block;width:100%}
 .cat-hdr{padding:8px 12px;display:flex;align-items:center;gap:6px;border-bottom:0.5px solid var(--border)}
 .cat-hdr-icon{font-size:15px}
 .cat-hdr-title{font-size:12px;font-weight:600;flex:1}
-.cat-cnt{font-size:10px;color:#aaa;background:#f7f5f0;padding:1px 6px;border-radius:10px}
-.item-row{display:flex;align-items:center;padding:6px 12px;border-bottom:0.5px solid #f0ede8;gap:0}
+.cat-cnt{font-size:10px;color:#aaa;background:#f0f4fa;padding:1px 6px;border-radius:10px}
+.item-row{display:flex;align-items:center;padding:6px 12px;border-bottom:0.5px solid #eef0f5;gap:0}
 .item-row:last-child{border-bottom:none}
-.item-row:hover{background:#fafaf8}
+.item-row:hover{background:#fafbfd}
 .item-chk{width:16px;height:16px;border-radius:4px;border:1.5px solid #ccc;cursor:pointer;flex:0 0 16px;display:flex;align-items:center;justify-content:center;transition:all .15s;margin-right:7px}
-.item-chk.on{background:var(--green);border-color:var(--green)}
+.item-chk.on{background:var(--blue);border-color:var(--blue)}
 .item-chk.on::after{content:'✓';color:#fff;font-size:9px;font-weight:700}
-.item-nm{flex:1 1 0;min-width:0;font-size:11px;color:#2c2c2a;line-height:1.3;margin-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.item-nm.b{font-weight:700}
+.item-nm{flex:1 1 0;min-width:0;font-size:11px;color:#1a2a3a;line-height:1.3;margin-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .item-nm.x{text-decoration:line-through;color:#bbb}
-.dest-icons{flex:0 0 63px;display:flex;gap:3px;align-items:center}
-.di{width:18px;height:18px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;cursor:pointer;border:1.5px solid transparent;opacity:.25;transition:all .12s}
-.di.on{opacity:1}
-.di.casa{background:var(--blue-l);border-color:var(--blue);color:var(--blue)}
-.di.chicas{background:var(--amber-l);border-color:var(--amber);color:var(--amber)}
-.di.jardin{background:var(--green-l);border-color:var(--green-m);color:var(--green)}
-.qty-w{flex:0 0 56px;display:flex;align-items:center;gap:3px;justify-content:flex-end;margin-left:4px}
-/* Bigger tap targets on mobile — no scroll jump */
-.qty-btn{width:28px;height:28px;border-radius:6px;border:0.5px solid var(--border);background:#f7f5f0;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#555;font-weight:600;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.qty-btn:active{background:#e0ddd6}
+.qty-w{flex:0 0 56px;display:flex;align-items:center;gap:3px;justify-content:flex-end}
+.qty-btn{width:28px;height:28px;border-radius:6px;border:0.5px solid var(--border);background:#f0f4fa;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#555;font-weight:600;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.qty-btn:active{background:#dde5f0}
 .qty-n{font-size:11px;font-weight:500;width:14px;text-align:center;flex-shrink:0}
 .add-row{padding:5px 12px}
 .add-inp{width:100%;border:none;background:transparent;font-size:11px;color:#888;outline:none;padding:1px 0}
@@ -92,43 +81,43 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f7f5f0;color:#2c2c2
 .hist-wrap{display:flex;flex-direction:column;gap:8px}
 .wk-card{background:#fff;border:0.5px solid var(--border);border-radius:12px;overflow:hidden}
 .wk-hdr{padding:11px 15px;display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none}
-.wk-hdr:hover{background:#fafaf8}
+.wk-hdr:hover{background:#fafbfd}
 .wk-num{font-size:13px;font-weight:600}
 .wk-date{font-size:11px;color:#aaa;flex:1}
 .wk-stats{display:flex;gap:6px}
-.wstat{font-size:11px;padding:2px 7px;border-radius:10px;background:#f7f5f0;color:#666}
+.wstat{font-size:11px;padding:2px 7px;border-radius:10px;background:#f0f4fa;color:#666}
 .wk-body{padding:0 15px 10px;border-top:0.5px solid var(--border)}
-.hi-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid #f5f2ed;font-size:12px}
+.hi-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid #eef0f5;font-size:12px}
 .hi-row:last-child{border-bottom:none}
-.hi-nm{color:#2c2c2a;flex:1}
+.hi-nm{color:#1a2a3a;flex:1}
 .hi-cat{font-size:10px;color:#bbb;flex:1;text-align:center}
-.hi-qty{font-weight:500;color:var(--green)}
+.hi-qty{font-weight:500;color:var(--blue)}
 .cmp-controls{background:#fff;border:0.5px solid var(--border);border-radius:12px;padding:12px 15px;margin-bottom:8px}
 .cmp-ctrl-title{font-size:12px;font-weight:600;color:#555;margin-bottom:8px;display:flex;align-items:center;gap:5px}
 .weeks-checkboxes{display:flex;flex-wrap:wrap;gap:6px}
 .wk-chk-btn{padding:5px 11px;border-radius:20px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:11px;font-weight:500;color:#666;transition:all .15s;white-space:nowrap}
-.wk-chk-btn.sel{background:var(--green-l);border-color:var(--green);color:var(--green)}
-.cmp-btn{margin-top:10px;padding:7px 16px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:5px}
+.wk-chk-btn.sel{background:var(--blue-l);border-color:var(--blue);color:var(--blue)}
+.cmp-btn{margin-top:10px;padding:7px 16px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:5px}
 .bar-card{background:#fff;border:0.5px solid var(--border);border-radius:12px;padding:13px;margin-bottom:8px}
-.sec-title{font-size:13px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:5px;color:#2c2c2a}
+.sec-title{font-size:13px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:5px;color:#1a2a3a}
 .bar-row{display:flex;align-items:center;gap:7px;margin-bottom:5px}
-.bar-lbl{font-size:11px;color:#555;min-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar-track{flex:1;height:13px;background:#f7f5f0;border-radius:6px;overflow:hidden;display:flex;gap:1px}
+.bar-lbl{font-size:11px;color:#555;min-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:13px;background:#f0f4fa;border-radius:6px;overflow:hidden;display:flex;gap:1px}
 .bar-seg{height:100%;min-width:0}
 .bar-val{font-size:11px;font-weight:500;min-width:22px;text-align:right;color:#555}
 .tbl-wrap{background:#fff;border:0.5px solid var(--border);border-radius:12px;padding:13px;margin-bottom:8px;overflow-x:auto}
 .cmp-tbl{width:100%;border-collapse:collapse;font-size:11px}
 .cmp-tbl th{padding:5px 8px;text-align:right;font-weight:600;color:#555;border-bottom:1px solid var(--border);white-space:nowrap}
 .cmp-tbl th:first-child{text-align:left}
-.cmp-tbl td{padding:5px 8px;text-align:right;border-bottom:0.5px solid #f5f2ed;color:#2c2c2a}
+.cmp-tbl td{padding:5px 8px;text-align:right;border-bottom:0.5px solid #eef0f5;color:#1a2a3a}
 .cmp-tbl td:first-child{text-align:left;color:#555}
 .cmp-tbl tr:last-child td{border-bottom:none}
-.up{color:var(--coral)}.down{color:var(--green)}.same{color:#ccc}
+.up{color:var(--red)}.down{color:var(--green)}.same{color:#ccc}
 .trend-cell{font-weight:600}
 .sum-row{background:#fff;border:0.5px solid var(--border);border-radius:12px;padding:11px 15px;margin-bottom:8px;display:flex;gap:12px;flex-wrap:wrap}
 .empty{text-align:center;padding:40px 20px;color:#aaa}
 .empty i{font-size:44px;display:block;margin-bottom:8px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#2c2c2a;color:#fff;padding:9px 18px;border-radius:10px;font-size:12px;z-index:999;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a2a3a;color:#fff;padding:9px 18px;border-radius:10px;font-size:12px;z-index:999;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1}
 @media(max-width:640px){.cat-grid{columns:1}}
 @media print{
@@ -142,7 +131,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f7f5f0;color:#2c2c2
   .logo,.sync-dot,.sync-label{display:none!important}
   .h-title{font-size:11pt!important;font-weight:700!important}
   .h-sub{font-size:7.5pt!important;color:#666!important}
-  .week-badge{background:none!important;border:0.75pt solid #3B6D11!important;color:#3B6D11!important;font-size:7.5pt!important;padding:1pt 6pt!important;border-radius:8pt!important}
+  .week-badge{background:none!important;border:0.75pt solid #2B6CB8!important;color:#2B6CB8!important;font-size:7.5pt!important;padding:1pt 6pt!important;border-radius:8pt!important}
   .cat-grid{columns:2!important;column-gap:6pt!important}
   .cat-card{border:0.5pt solid #bbb!important;border-radius:2pt!important;margin-bottom:4pt!important;break-inside:avoid!important;page-break-inside:avoid!important;background:#fff!important;display:inline-block!important;width:100%!important}
   .cat-hdr{padding:2.5pt 5pt!important;border-bottom:0.5pt solid #ccc!important;background:#f0f0ee!important;display:flex!important;align-items:center!important}
@@ -153,9 +142,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f7f5f0;color:#2c2c2
   .item-chk{width:8pt!important;height:8pt!important;border:0.8pt solid #888!important;border-radius:1pt!important;background:#fff!important;flex:0 0 8pt!important;display:block!important;margin-right:4pt!important}
   .item-chk::after{display:none!important}
   .item-nm{flex:1 1 0!important;font-size:6.5pt!important;line-height:1.2!important;color:#111!important;margin-right:4pt!important;white-space:normal!important}
-  .item-nm.b{font-weight:700!important}
   .item-nm.x{text-decoration:none!important}
-  .dest-icons{display:none!important}
   .qty-w{display:none!important}
   .item-row::after{content:'______';font-size:5.5pt;color:#bbb;flex:0 0 28pt;text-align:right;letter-spacing:-0.5pt}
   .add-row{display:none!important}
@@ -168,8 +155,8 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f7f5f0;color:#2c2c2
   <div style="display:flex;align-items:center;gap:10px">
     <div class="logo"><i class="ti ti-shopping-cart"></i></div>
     <div>
-      <div class="h-title">Lista del Súper</div>
-      <div class="h-sub">Torre — Lista semanal de compras</div>
+      <div class="h-title">PriceSmart</div>
+      <div class="h-sub">Lista semanal de compras</div>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:8px">
@@ -187,19 +174,12 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f7f5f0;color:#2c2c2
   <div class="sum-bar no-print">
     <div class="sum-s"><div class="sum-lbl">Productos</div><div class="sum-val" id="stTotal">0</div></div>
     <div class="sdiv"></div>
-    <div class="sum-s"><div class="sum-lbl">Marcados</div><div class="sum-val g" id="stChecked">0</div></div>
+    <div class="sum-s"><div class="sum-lbl">Marcados</div><div class="sum-val b" id="stChecked">0</div></div>
     <div class="sdiv"></div>
-    <div class="sum-s"><div class="sum-lbl">Supermercado</div><div class="sum-val" id="stSuper">0</div></div>
-    <div class="sdiv"></div>
-    <div class="sum-s"><div class="sum-lbl">Proveedor local</div><div class="sum-val" id="stLocal">0</div></div>
+    <div class="sum-s"><div class="sum-lbl">Pendientes</div><div class="sum-val" id="stPending">0</div></div>
     <button class="btn-confirm no-print" onclick="confirmWeek()"><i class="ti ti-check"></i>Confirmar semana</button>
   </div>
   <div class="toolbar no-print">
-    <div class="dest-filter">
-      <button class="dest-btn act-casa" onclick="toggleFilter('casa',this)"><i class="ti ti-home" style="font-size:13px"></i>Casa</button>
-      <button class="dest-btn act-chicas" onclick="toggleFilter('chicas',this)"><i class="ti ti-users" style="font-size:13px"></i>Chicas</button>
-      <button class="dest-btn act-jardin" onclick="toggleFilter('jardin',this)"><i class="ti ti-plant" style="font-size:13px"></i>Jardín</button>
-    </div>
     <div class="search-w"><i class="ti ti-search"></i><input class="search-inp" placeholder="Buscar producto..." oninput="doSearch(this.value)"></div>
     <button class="print-btn no-print" onclick="window.print()"><i class="ti ti-printer"></i>Imprimir</button>
   </div>
@@ -233,117 +213,76 @@ const firebaseConfig = {
 
 const fbApp = initializeApp(firebaseConfig);
 const db = getDatabase(fbApp);
-const STATE_REF = ref(db, 'lista-super');
+const STATE_REF = ref(db, 'price-smart');
 
-// ── Categories ────────────────────────────────────
-const CATS=[
-  {id:'verduras',name:'Verduras',icon:'ti-leaf',color:'#3B6D11',bg:'#EAF3DE',items:[
-    {n:'Acelga',s:false},{n:'Arvejas',s:true},{n:'Aguacate',s:false},{n:'Ajo',s:false},
-    {n:'Arúgula',s:true},{n:'Berenjena',s:false},{n:'Brócoli',s:false},{n:'Camote',s:true},
-    {n:'Cebolla',s:false},{n:'Champiñones',s:true},{n:'Chile Morrón',s:true},{n:'Chile Pimiento',s:false},
-    {n:'Cilantro',s:false},{n:'Coliflor',s:false},{n:'Ejote',s:false},{n:'Elote',s:false},
-    {n:'Espinaca',s:true},{n:'Guicoy',s:false},{n:'Guicoyitos',s:false},{n:'Guisquil',s:false},
-    {n:'Lechuga',s:true},{n:'Papa',s:false},{n:'Pepino',s:false},{n:'Perejil',s:false},
-    {n:'Perulero',s:false},{n:'Tomate',s:false},{n:'Zanahoria',s:false},{n:'Zucchini',s:false}
+const CATS = [
+  {id:'limpieza', name:'Limpieza', icon:'ti-sparkles', color:'#2B6CB8', bg:'#EBF2FB', items:[
+    'Ajax','Ariel','Bolsa basura cocina','Bolsa basura negra','Bolsas ziploc','Bounce',
+    'Cascade pastillas lavaplatos','DampRid humedad','Dawn jabon platos','Downy suavizante',
+    'Esponjas para lavar platos','Guantes amarillos','Guantes para cocinar',
+    'Jabon de manos cocina','Mayordomo','Panos humedos cocina',
+    'Papel de bano Charmin','Papel de bano Members Selection',
+    'Servilletas','Tide capsulas','Tide liquido','Toallas Lysol desinfectantes','Vanish'
   ]},
-  {id:'frutas',name:'Frutas',icon:'ti-apple',color:'#BA7517',bg:'#FAEEDA',items:[
-    {n:'Banano',s:false},{n:'Blueberries',s:true},{n:'Frambuesa',s:true},{n:'Fresas',s:true},
-    {n:'Limón',s:false},{n:'Mandarina',s:true},{n:'Manzana',s:false},{n:'Naranja',s:false},
-    {n:'Papaya',s:true},{n:'Pera',s:true},{n:'Piña',s:false},{n:'Plátano',s:false},
-    {n:'Sandía',s:true},{n:'Uva verde',s:true}
+  {id:'frutas', name:'Frutas', icon:'ti-apple', color:'#1E7A38', bg:'#E4F5EA', items:[
+    'Blueberries','Cerezas','Ciruelas','Frambuesas','Mandarina'
   ]},
-  {id:'pan',name:'Pan y Pastas',icon:'ti-bread',color:'#993C1D',bg:'#FAECE7',items:[
-    {n:'Harina',s:false},{n:'Maseca',s:false},{n:'Miga de pan',s:false},{n:'Pan hamburguesa',s:false},
-    {n:'Pan hot dog',s:false},{n:'Pasta corta',s:false},{n:'Pasta corta sopa',s:false},
-    {n:'Sandwich blanco',s:false},{n:'Sandwich integral',s:false},{n:'Spaghetti',s:false},{n:'Tortilla harina',s:false}
+  {id:'condimentos', name:'Condimentos', icon:'ti-bottle', color:'#BA7517', bg:'#FAEEDA', items:[
+    'Aceite oliva extra virgen','Aceite oliva suave','Ajo en polvo',
+    'Cebolla en polvo','Mantequilla mani','Miel maple','Oregano','Vinagre balsamico'
   ]},
-  {id:'embutidos',name:'Embutidos y Carnes',icon:'ti-meat',color:'#A32D2D',bg:'#FCEBEB',items:[
-    {n:'Jamón',s:false},{n:'Salchicha Bremen',s:false}
+  {id:'comida', name:'Comida', icon:'ti-basket', color:'#993C1D', bg:'#FAECE7', items:[
+    'Avena Red Mill','Bagels','Cafe Nestle','Chia','Cremora','Hidratonic',
+    'Hunts pasta de tomate','Hunts tomate en trozos','Nueces','Pasas'
   ]},
-  {id:'refrigerados',name:'Refrigerados',icon:'ti-snowflake',color:'#185FA5',bg:'#E6F1FB',items:[
-    {n:'Crema',s:false},{n:'Mantequilla 100grs',s:false},{n:'Mantequilla 200grs',s:false},
-    {n:'Quesito brie',s:false},{n:'Quesito redondo',s:false},{n:'Queso cottage',s:false},
-    {n:'Queso crema 2 Pinos',s:false},{n:'Queso crema',s:false},{n:'Queso feta',s:false},
-    {n:'Queso mozarella',s:false},{n:'Queso panela',s:false},{n:'Yogurt',s:false}
+  {id:'refrigerados', name:'Refrigerados', icon:'ti-snowflake', color:'#534AB7', bg:'#EEEDFE', items:[
+    'Dumpling pollo y cilantro','Mini pizzas','Palitos de queso',
+    'Quesitos redondos','Queso parmesano','Ravioli relleno','Salmon','Salmon ahumado'
   ]},
-  {id:'congelados',name:'Congelados',icon:'ti-temperature-minus',color:'#534AB7',bg:'#EEEDFE',items:[
-    {n:'Pupusas',s:false},{n:'Waffles',s:false}
-  ]},
-  {id:'limpieza',name:'Limpieza',icon:'ti-sparkles',color:'#0F6E56',bg:'#E1F5EE',items:[
-    {n:'Bolsa basura mediana',s:false},{n:'Bolsa basura pequeña',s:false},{n:'Cloro',s:false},
-    {n:'Jabón en bola',s:false},{n:'Mayordomo pequeño',s:false},{n:'Lysol cítrico',s:false},
-    {n:'Papel aluminio',s:false},{n:'Servilletas',s:false},{n:'Windex',s:false},
-    {n:'Zip loc medianas',s:false},{n:'Zip loc pequeñas',s:false}
-  ]},
-  {id:'desayuno',name:'Desayuno',icon:'ti-coffee',color:'#BA7517',bg:'#FAEEDA',items:[
-    {n:'Avena',s:false},{n:'Azúcar',s:false},{n:'Café',s:false},{n:'Cereal',s:false},
-    {n:'Huevos',s:false},{n:'Jalea',s:false},{n:'Leche descremada',s:false},{n:'Leche entera',s:false},
-    {n:'Leche soya',s:false},{n:'Miel abeja',s:false},{n:'Orgain shake',s:false},
-    {n:'Pediasure',s:false},{n:'Té',s:false}
-  ]},
-  {id:'salsas',name:'Salsas y Condimentos',icon:'ti-bottle',color:'#0F6E56',bg:'#E1F5EE',items:[
-    {n:'Aceite Ideal',s:false},{n:'Aceite Mazola',s:false},{n:'Ajo en polvo',s:false},
-    {n:'Cebolla en polvo',s:false},{n:'Ketchup',s:false},{n:'Mayonesa',s:false},
-    {n:'Mostaza',s:false},{n:'Sal',s:false}
-  ]},
-  {id:'granos',name:'Granos',icon:'ti-grain',color:'#BA7517',bg:'#FAEEDA',items:[
-    {n:'Arroz Gallo Dorado',s:false},{n:'Frijol negro',s:false},{n:'Garbanzos',s:false},{n:'Lentejas',s:false}
-  ]},
-  {id:'enlatados',name:'Enlatados',icon:'ti-archive',color:'#5F5E5A',bg:'#F1EFE8',items:[
-    {n:'Frijol volteado',s:false},{n:'Garbanzos enlatados',s:false},{n:'Palmitos',s:false}
-  ]},
-  {id:'otros',name:'Otros',icon:'ti-shopping-bag',color:'#5F5E5A',bg:'#F1EFE8',items:[
-    {n:'Atún',s:false},{n:'Atún pequeño',s:false},{n:'Aceite oliva extra virgen',s:false},
-    {n:'Pan francés',s:false},{n:'Pan dulce',s:false},{n:'Pan dulce tostado',s:false},{n:'Yogurt bebible',s:false}
-  ]},
-  {id:'bano',name:'Baño',icon:'ti-droplet',color:'#185FA5',bg:'#E6F1FB',items:[
-    {n:'Desodorante',s:false},{n:'Jabón manos Protex',s:false},{n:'Kleenex',s:false},
-    {n:'Papel baño',s:false},{n:'Wipes',s:false}
-  ]},
-  {id:'snacks',name:'Snacks',icon:'ti-cookie',color:'#993C1D',bg:'#FAECE7',items:[
-    {n:'Chikis',s:false},{n:'Elotitos',s:false},{n:'Galletas soda',s:false},
-    {n:'Manías con limón',s:false},{n:'Oreos',s:false},{n:'Poporopos',s:false}
-  ]},
-  {id:'carnes',name:'Carnes La Villa',icon:'ti-pig',color:'#A32D2D',bg:'#FCEBEB',items:[
-    {n:'Carne molida 80/20',s:false},{n:'Carne molida cerdo',s:false},{n:'Carne molida lomito',s:false},
-    {n:'Carne molida pollo',s:false},{n:'Carne para cocido',s:false},{n:'Hueso para cocido',s:false},
-    {n:'Medallones lomito',s:false},{n:'Pechuga de pollo',s:false},{n:'Pierna completa',s:false},
-    {n:'Pollo entero',s:false},{n:'Solomito cerdo',s:false}
-  ]},
-  {id:'delica',name:'Delica',icon:'ti-award',color:'#534AB7',bg:'#EEEDFE',items:[
-    {n:'Jamón de pavo',s:false},{n:'Picado carpaccio',s:false},{n:'Queso Delica',s:false},
-    {n:'Salami',s:false},{n:'Salchicha Delica',s:false}
+  {id:'otros', name:'Otros', icon:'ti-shopping-bag', color:'#5F5E5A', bg:'#F1EFE8', items:[
+    'Baterias','Panales','Panales pull up','Toallas humedas'
   ]}
 ];
 
-// ── Helpers ───────────────────────────────────────
-function makeKey(catId, name){ return catId + '--' + name.replace(/[.#$/\[\]]/g,'_'); }
+// Safe Firebase key — no special chars
+function makeKey(catId, name){
+  return catId + '--' + name.replace(/[^a-zA-Z0-9\-_]/g, '-');
+}
 
-const WK_COLORS=['#3B6D11','#BA7517','#185FA5','#A32D2D','#534AB7','#0F6E56','#993C1D','#888780'];
+const WK_COLORS = ['#2B6CB8','#E8742A','#1E7A38','#C0392B','#534AB7','#BA7517','#5F5E5A','#2B8CB8'];
+
 let ST = buildEmpty();
-let filters={casa:true,chicas:true,jardin:true}, srch='', selWeeks=[];
-let remoteWritePending=false, writeTimer=null;
+let srch = '';
+let selWeeks = [];
+let remoteWritePending = false;
+let writeTimer = null;
 
 function buildEmpty(){
-  const items={};
-  CATS.forEach(c=>c.items.forEach(it=>{ items[makeKey(c.id,it.n)]={qty:0,chk:false,dest:{casa:true,chicas:false,jardin:false},s:it.s}; }));
-  return{items,curWeek:getWeekStr(new Date()),history:[],custom:{}};
-}
-function getWeekStr(d){
-  const yr=d.getFullYear(),s=new Date(yr,0,1),wk=Math.ceil(((d-s)/86400000+s.getDay()+1)/7);
-  return 'Semana '+wk+', '+yr;
-}
-function setWeekBadge(){ document.getElementById('weekBadge').textContent=ST.curWeek||getWeekStr(new Date()); }
-function setSyncStatus(status,label){
-  document.getElementById('syncDot').className='sync-dot '+status;
-  document.getElementById('syncLabel').textContent=label;
+  const items = {};
+  CATS.forEach(function(c){
+    c.items.forEach(function(n){ items[makeKey(c.id,n)] = {qty:0, chk:false}; });
+  });
+  return {items, curWeek:getWeekStr(new Date()), history:[], custom:{}};
 }
 
-// ── Firebase ──────────────────────────────────────
+function getWeekStr(d){
+  const yr = d.getFullYear(), s = new Date(yr,0,1);
+  const wk = Math.ceil(((d-s)/86400000 + s.getDay()+1)/7);
+  return 'Semana ' + wk + ', ' + yr;
+}
+
+function setWeekBadge(){ document.getElementById('weekBadge').textContent = ST.curWeek || getWeekStr(new Date()); }
+
+function setSyncStatus(status, label){
+  document.getElementById('syncDot').className = 'sync-dot ' + status;
+  document.getElementById('syncLabel').textContent = label;
+}
+
+// ── Firebase listeners ────────────────────────────
 onValue(STATE_REF, function(snap){
   if(remoteWritePending) return;
-  const data=snap.val();
-  if(data) ST=data;
+  const data = snap.val();
+  if(data) ST = data;
   setSyncStatus('ok','Sincronizado');
   setWeekBadge(); renderCats();
   if(document.getElementById('panel-historial').classList.contains('active')) renderHistory();
@@ -356,21 +295,21 @@ onValue(STATE_REF, function(snap){
 function saveToFirebase(){
   setSyncStatus('syncing','Guardando...');
   clearTimeout(writeTimer);
-  writeTimer=setTimeout(async function(){
-    remoteWritePending=true;
+  writeTimer = setTimeout(async function(){
+    remoteWritePending = true;
     try{
       await set(STATE_REF, ST);
       setSyncStatus('ok','Sincronizado');
     } catch(err){
       console.error('Save error:', err.code, err.message);
-      setSyncStatus('err','Error: '+err.code);
+      setSyncStatus('err','Error: ' + (err.code||err.message));
     }
-    setTimeout(function(){ remoteWritePending=false; }, 1000);
+    setTimeout(function(){ remoteWritePending = false; }, 1000);
   }, 600);
 }
 
-// ── Tab switching ─────────────────────────────────
-window.switchTab = function(tab,btn){
+// ── Navigation ────────────────────────────────────
+window.switchTab = function(tab, btn){
   document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
   document.querySelectorAll('.nav-tab').forEach(function(t){ t.classList.remove('active'); });
   document.getElementById('panel-'+tab).classList.add('active');
@@ -379,63 +318,46 @@ window.switchTab = function(tab,btn){
   if(tab==='comparar') renderComparePicker();
 };
 
-window.toggleFilter = function(dest,btn){
-  filters[dest]=!filters[dest];
-  var cls={casa:'act-casa',chicas:'act-chicas',jardin:'act-jardin'};
-  filters[dest]?btn.classList.add(cls[dest]):btn.classList.remove(cls[dest]);
-  renderCats();
-};
+window.doSearch = function(v){ srch = v.toLowerCase(); renderCats(); };
 
-window.doSearch = function(v){ srch=v.toLowerCase(); renderCats(); };
-
-// ── Render — NO full DOM rebuild on qty change ────
+// ── Render categories ─────────────────────────────
 function renderCats(){
-  const grid=document.getElementById('catGrid');
-  grid.innerHTML='';
-  let tot=0,chk=0,sup=0,loc=0;
+  const grid = document.getElementById('catGrid');
+  grid.innerHTML = '';
+  let tot=0, chk=0;
 
   CATS.forEach(function(cat){
-    const allItems=cat.items.map(function(it){ return Object.assign({},it,{key:makeKey(cat.id,it.n)}); });
-    const customs=Object.entries(ST.custom||{})
+    const baseItems = cat.items.map(function(n){ return {n:n, key:makeKey(cat.id,n)}; });
+    const customs = Object.entries(ST.custom||{})
       .filter(function(e){ return e[0].startsWith(cat.id+'--custom--'); })
-      .map(function(e){ return {n:e[1].n,s:false,key:e[0],custom:true}; });
-    const combined=allItems.concat(customs);
-    const withQty=combined.filter(function(it){ const st=ST.items[it.key]; return st&&st.qty>0; });
+      .map(function(e){ return {n:e[1].n, key:e[0]}; });
+    const combined = baseItems.concat(customs);
+    const withQty = combined.filter(function(it){ const st=ST.items[it.key]; return st&&st.qty>0; });
 
     withQty.forEach(function(it){
-      const st=ST.items[it.key];
-      tot+=st.qty;
-      if(st.chk) chk+=st.qty;
-      if(it.s) sup+=st.qty; else loc+=st.qty;
+      const st = ST.items[it.key];
+      tot += st.qty;
+      if(st.chk) chk += st.qty;
     });
 
-    const card=document.createElement('div'); card.className='cat-card';
-    card.innerHTML='<div class="cat-hdr" style="background:'+cat.bg+'40">'
+    const card = document.createElement('div'); card.className = 'cat-card';
+    card.innerHTML = '<div class="cat-hdr" style="background:'+cat.bg+'">'
       +'<i class="ti '+cat.icon+' cat-hdr-icon" style="color:'+cat.color+'"></i>'
       +'<span class="cat-hdr-title" style="color:'+cat.color+'">'+cat.name+'</span>'
-      +(withQty.length?'<span class="cat-cnt">'+withQty.length+'</span>':'')
+      +(withQty.length ? '<span class="cat-cnt">'+withQty.length+'</span>' : '')
       +'</div>';
 
     combined.forEach(function(it){
-      const key=it.key;
-      if(!ST.items[key]) ST.items[key]={qty:0,chk:false,dest:{casa:true,chicas:false,jardin:false},s:it.s||false};
-      const st=ST.items[key];
-      if(st.qty>0){
-        const dm=Object.keys(filters).some(function(d){ return filters[d]&&st.dest&&st.dest[d]; });
-        if(!dm) return;
-      }
-      if(srch&&!it.n.toLowerCase().includes(srch)&&st.qty===0) return;
+      const key = it.key;
+      if(!ST.items[key]) ST.items[key] = {qty:0, chk:false};
+      const st = ST.items[key];
+      if(srch && !it.n.toLowerCase().includes(srch) && st.qty===0) return;
 
-      const row=document.createElement('div'); row.className='item-row';
-      const safeKey=key.replace(/'/g,"\\'");
-      row.innerHTML=
+      const safeKey = key.replace(/'/g,"\\'");
+      const row = document.createElement('div'); row.className = 'item-row';
+      row.innerHTML =
         '<div class="item-chk'+(st.chk?' on':'')+'" onclick="toggleChk(\''+safeKey+'\')"></div>'
-        +'<span class="item-nm'+(it.s?' b':'')+(st.chk&&st.qty>0?' x':'')+'" title="'+it.n+'">'+it.n+'</span>'
-        +'<div class="dest-icons">'
-          +'<div class="di casa'+(st.dest&&st.dest.casa?' on':'')+'" onclick="toggleDest(\''+safeKey+'\',\'casa\')" title="Casa"><i class="ti ti-home" style="font-size:9px"></i></div>'
-          +'<div class="di chicas'+(st.dest&&st.dest.chicas?' on':'')+'" onclick="toggleDest(\''+safeKey+'\',\'chicas\')" title="Chicas"><i class="ti ti-users" style="font-size:9px"></i></div>'
-          +'<div class="di jardin'+(st.dest&&st.dest.jardin?' on':'')+'" onclick="toggleDest(\''+safeKey+'\',\'jardin\')" title="Jardín"><i class="ti ti-plant" style="font-size:9px"></i></div>'
-        +'</div>'
+        +'<span class="item-nm'+(st.chk&&st.qty>0?' x':'')+'" title="'+it.n+'">'+it.n+'</span>'
         +'<div class="qty-w">'
           +'<button class="qty-btn" ontouchstart="" onclick="chgQty(\''+safeKey+'\',-1)">&#8722;</button>'
           +'<span class="qty-n" id="qn-'+safeKey+'">'+st.qty+'</span>'
@@ -444,157 +366,171 @@ function renderCats(){
       card.appendChild(row);
     });
 
-    const ar=document.createElement('div'); ar.className='add-row';
-    ar.innerHTML='<input class="add-inp" placeholder="+ Agregar..." onkeydown="addCustom(event,\''+cat.id+'\',\''+cat.name+'\')">';
+    const ar = document.createElement('div'); ar.className = 'add-row';
+    ar.innerHTML = '<input class="add-inp" placeholder="+ Agregar..." onkeydown="addCustom(event,\''+cat.id+'\',\''+cat.name+'\')">';
     card.appendChild(ar);
     grid.appendChild(card);
   });
 
-  document.getElementById('stTotal').textContent=tot;
-  document.getElementById('stChecked').textContent=chk;
-  document.getElementById('stSuper').textContent=sup;
-  document.getElementById('stLocal').textContent=loc;
+  document.getElementById('stTotal').textContent = tot;
+  document.getElementById('stChecked').textContent = chk;
+  document.getElementById('stPending').textContent = tot - chk;
 }
 
-// ── Update qty in-place (no scroll jump) ──────────
-window.chgQty = function(key,d){
-  if(!ST.items[key]) ST.items[key]={qty:0,chk:false,dest:{casa:true,chicas:false,jardin:false}};
-  const newQty=Math.max(0,(ST.items[key].qty||0)+d);
-  ST.items[key].qty=newQty;
-  if(newQty===0) ST.items[key].chk=false;
+// ── Qty change — in-place update, no scroll jump ──
+window.chgQty = function(key, d){
+  if(!ST.items[key]) ST.items[key] = {qty:0, chk:false};
+  const newQty = Math.max(0, (ST.items[key].qty||0) + d);
+  ST.items[key].qty = newQty;
+  if(newQty===0) ST.items[key].chk = false;
 
-  // Update just the number in-place — no full re-render
-  const numEl=document.getElementById('qn-'+key);
-  if(numEl) numEl.textContent=newQty;
+  const numEl = document.getElementById('qn-'+key);
+  if(numEl) numEl.textContent = newQty;
 
   saveToFirebase();
-  // Full re-render only if qty crossed 0 (item appears/disappears)
-  if(newQty===0||newQty===1) renderCats();
+  if(newQty===0 || newQty===1) renderCats();
 };
 
 window.toggleChk = function(key){
-  if(!ST.items[key]||ST.items[key].qty===0) return;
-  ST.items[key].chk=!ST.items[key].chk;
+  if(!ST.items[key] || ST.items[key].qty===0) return;
+  ST.items[key].chk = !ST.items[key].chk;
   saveToFirebase(); renderCats();
 };
 
-window.toggleDest = function(key,dest){
-  if(!ST.items[key]) return;
-  if(!ST.items[key].dest) ST.items[key].dest={};
-  ST.items[key].dest[dest]=!ST.items[key].dest[dest];
-  saveToFirebase(); renderCats();
-};
-
-window.addCustom = function(e,catId,catName){
+window.addCustom = function(e, catId, catName){
   if(e.key!=='Enter') return;
-  const v=e.target.value.trim(); if(!v) return;
-  const key=catId+'--custom--'+Date.now();
-  if(!ST.custom) ST.custom={};
-  ST.custom[key]={n:v,cat:catName};
-  ST.items[key]={qty:1,chk:false,dest:{casa:true,chicas:false,jardin:false},s:false};
-  e.target.value=''; saveToFirebase(); renderCats(); toast('Agregado: '+v);
+  const v = e.target.value.trim(); if(!v) return;
+  const key = catId+'--custom--'+Date.now();
+  if(!ST.custom) ST.custom = {};
+  ST.custom[key] = {n:v, cat:catName};
+  ST.items[key] = {qty:1, chk:false};
+  e.target.value = ''; saveToFirebase(); renderCats(); toast('Agregado: '+v);
 };
 
 window.confirmWeek = function(){
-  const its=[];
+  const its = [];
   CATS.forEach(function(cat){
-    cat.items.forEach(function(it){
-      const key=makeKey(cat.id,it.n), st=ST.items[key];
-      if(st&&st.qty>0) its.push({name:it.n,cat:cat.name,qty:st.qty});
+    cat.items.forEach(function(n){
+      const key = makeKey(cat.id,n), st = ST.items[key];
+      if(st && st.qty>0) its.push({name:n, cat:cat.name, qty:st.qty});
     });
   });
   Object.entries(ST.custom||{}).forEach(function(e){
-    const st=ST.items[e[0]]; if(st&&st.qty>0) its.push({name:e[1].n,cat:e[1].cat,qty:st.qty});
+    const st = ST.items[e[0]];
+    if(st && st.qty>0) its.push({name:e[1].n, cat:e[1].cat, qty:st.qty});
   });
   if(!its.length){ toast('No hay productos en la lista'); return; }
-  const entry={week:ST.curWeek,date:new Date().toLocaleDateString('es-GT',{day:'numeric',month:'long',year:'numeric'}),items:its};
-  if(!ST.history) ST.history=[];
-  ST.history.unshift(entry); if(ST.history.length>16) ST.history.pop();
+  const entry = {
+    week: ST.curWeek,
+    date: new Date().toLocaleDateString('es-GT',{day:'numeric',month:'long',year:'numeric'}),
+    items: its
+  };
+  if(!ST.history) ST.history = [];
+  ST.history.unshift(entry);
+  if(ST.history.length>16) ST.history.pop();
   Object.keys(ST.items).forEach(function(k){ ST.items[k].qty=0; ST.items[k].chk=false; });
-  ST.custom={};
-  const nd=new Date(); nd.setDate(nd.getDate()+7); ST.curWeek=getWeekStr(nd);
+  ST.custom = {};
+  const nd = new Date(); nd.setDate(nd.getDate()+7); ST.curWeek = getWeekStr(nd);
   saveToFirebase(); setWeekBadge(); renderCats(); toast('¡Semana confirmada!');
 };
 
 // ── History ───────────────────────────────────────
 function renderHistory(){
-  const wrap=document.getElementById('histWrap');
-  if(!ST.history||!ST.history.length){ wrap.innerHTML='<div class="empty"><i class="ti ti-history"></i>No hay historial aún.</div>'; return; }
-  wrap.innerHTML='';
-  ST.history.forEach(function(wk,i){
-    const tot=wk.items.reduce(function(a,b){ return a+b.qty; },0);
-    const card=document.createElement('div'); card.className='wk-card';
-    card.innerHTML='<div class="wk-hdr" onclick="toggleWk('+i+')">'
+  const wrap = document.getElementById('histWrap');
+  if(!ST.history||!ST.history.length){
+    wrap.innerHTML = '<div class="empty"><i class="ti ti-history"></i>No hay historial aún.</div>'; return;
+  }
+  wrap.innerHTML = '';
+  ST.history.forEach(function(wk, i){
+    const tot = wk.items.reduce(function(a,b){ return a+b.qty; }, 0);
+    const card = document.createElement('div'); card.className = 'wk-card';
+    card.innerHTML = '<div class="wk-hdr" onclick="toggleWk('+i+')">'
       +'<i class="ti ti-calendar" style="color:#aaa;font-size:15px"></i>'
-      +'<span class="wk-num">'+wk.week+'</span><span class="wk-date">'+(wk.date||'')+'</span>'
+      +'<span class="wk-num">'+wk.week+'</span>'
+      +'<span class="wk-date">'+(wk.date||'')+'</span>'
       +'<div class="wk-stats"><span class="wstat">'+wk.items.length+' productos</span><span class="wstat">'+tot+' unidades</span></div>'
       +'<i class="ti ti-chevron-down" style="color:#aaa;font-size:15px"></i></div>'
       +'<div class="wk-body" id="wkb-'+i+'" style="display:none">'
-      +wk.items.map(function(it){ return '<div class="hi-row"><span class="hi-nm">'+it.name+'</span><span class="hi-cat">'+it.cat+'</span><span class="hi-qty">'+it.qty+' und</span></div>'; }).join('')
-      +'</div>';
+      +wk.items.map(function(it){
+        return '<div class="hi-row"><span class="hi-nm">'+it.name+'</span><span class="hi-cat">'+it.cat+'</span><span class="hi-qty">'+it.qty+' und</span></div>';
+      }).join('')+'</div>';
     wrap.appendChild(card);
   });
 }
-window.toggleWk = function(i){ const el=document.getElementById('wkb-'+i); el.style.display=el.style.display==='none'?'block':'none'; };
+window.toggleWk = function(i){
+  const el = document.getElementById('wkb-'+i);
+  el.style.display = el.style.display==='none' ? 'block' : 'none';
+};
 
 // ── Compare ───────────────────────────────────────
 function renderComparePicker(){
-  const box=document.getElementById('wkCheckboxes');
+  const box = document.getElementById('wkCheckboxes');
   if(!ST.history||!ST.history.length){
-    document.getElementById('cmpContent').innerHTML='<div class="empty"><i class="ti ti-chart-bar"></i>Sin historial aún.</div>';
-    box.innerHTML='<span style="font-size:12px;color:#aaa">Sin historial.</span>'; return;
+    document.getElementById('cmpContent').innerHTML = '<div class="empty"><i class="ti ti-chart-bar"></i>Sin historial aún.</div>';
+    box.innerHTML = '<span style="font-size:12px;color:#aaa">Sin historial.</span>'; return;
   }
-  if(!selWeeks.length) selWeeks=ST.history.slice(0,Math.min(3,ST.history.length)).map(function(w){ return w.week; });
-  box.innerHTML='';
+  if(!selWeeks.length) selWeeks = ST.history.slice(0,Math.min(3,ST.history.length)).map(function(w){ return w.week; });
+  box.innerHTML = '';
   ST.history.forEach(function(wk){
-    const btn=document.createElement('button');
-    btn.className='wk-chk-btn'+(selWeeks.includes(wk.week)?' sel':'');
-    btn.textContent=wk.week;
-    btn.onclick=function(){ selWeeks.includes(wk.week)?selWeeks=selWeeks.filter(function(w){ return w!==wk.week; }):selWeeks.push(wk.week); btn.classList.toggle('sel'); };
+    const btn = document.createElement('button');
+    btn.className = 'wk-chk-btn'+(selWeeks.includes(wk.week)?' sel':'');
+    btn.textContent = wk.week;
+    btn.onclick = function(){
+      if(selWeeks.includes(wk.week)) selWeeks = selWeeks.filter(function(w){ return w!==wk.week; });
+      else selWeeks.push(wk.week);
+      btn.classList.toggle('sel');
+    };
     box.appendChild(btn);
   });
   runCompare();
 }
-window.renderComparePicker=renderComparePicker;
+window.renderComparePicker = renderComparePicker;
 
 window.runCompare = function(){
-  const content=document.getElementById('cmpContent');
+  const content = document.getElementById('cmpContent');
   if(!ST.history||ST.history.length<2){ content.innerHTML='<div class="empty"><i class="ti ti-chart-bar"></i>Necesitás al menos 2 semanas.</div>'; return; }
-  const chosen=ST.history.filter(function(w){ return selWeeks.includes(w.week); });
+  const chosen = ST.history.filter(function(w){ return selWeeks.includes(w.week); });
   if(chosen.length<2){ content.innerHTML='<div class="empty"><i class="ti ti-info-circle"></i>Seleccioná al menos 2 semanas.</div>'; return; }
-  const sorted=chosen.slice().sort(function(a,b){
+  const sorted = chosen.slice().sort(function(a,b){
     const wa=parseInt(a.week.match(/\d+/)[0]),wb=parseInt(b.week.match(/\d+/)[0]);
     const ya=parseInt(a.week.match(/\d{4}/)[0]),yb=parseInt(b.week.match(/\d{4}/)[0]);
     return ya!==yb?ya-yb:wa-wb;
   });
-  const maps=sorted.map(function(w){ const m={}; w.items.forEach(function(it){ m[it.name]=(m[it.name]||0)+it.qty; }); return m; });
-  const allNames=Array.from(new Set(sorted.reduce(function(a,w){ return a.concat(w.items.map(function(i){ return i.name; })); },[])));
+  const maps = sorted.map(function(w){ const m={}; w.items.forEach(function(it){ m[it.name]=(m[it.name]||0)+it.qty; }); return m; });
+  const allNames = Array.from(new Set(sorted.reduce(function(a,w){ return a.concat(w.items.map(function(i){ return i.name; })); },[])));
   allNames.sort();
-  const totals=sorted.map(function(_,i){ return Object.values(maps[i]).reduce(function(a,b){ return a+b; },0); });
-  let html='<div class="sum-row">';
+  const totals = sorted.map(function(_,i){ return Object.values(maps[i]).reduce(function(a,b){ return a+b; },0); });
+
+  let html = '<div class="sum-row">';
   sorted.forEach(function(w,i){ html+='<div class="sum-s"><div class="sum-lbl" style="color:'+WK_COLORS[i%WK_COLORS.length]+'">'+w.week+'</div><div class="sum-val">'+totals[i]+'</div></div>'; if(i<sorted.length-1) html+='<div class="sdiv"></div>'; });
-  html+='</div>';
-  let leg='<div style="display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:#888;align-items:center;margin-bottom:8px">';
+  html += '</div>';
+
+  let leg = '<div style="display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:#888;align-items:center;margin-bottom:8px">';
   sorted.forEach(function(w,i){ leg+='<span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:'+WK_COLORS[i%WK_COLORS.length]+';margin-right:4px;vertical-align:middle"></span>'+w.week+'</span>'; });
-  leg+='</div>';
-  const ranked=allNames.map(function(n){ return {n:n,max:Math.max.apply(null,maps.map(function(m){ return m[n]||0; }))}; }).sort(function(a,b){ return b.max-a.max; }).slice(0,10);
-  const maxQ=Math.max.apply(null,ranked.map(function(r){ return r.max; }))||1;
-  let bar='<div class="bar-card"><div class="sec-title"><i class="ti ti-chart-bar" style="font-size:15px"></i>Comparativo por producto (top 10)</div>'+leg;
+  leg += '</div>';
+
+  const ranked = allNames.map(function(n){ return {n:n,max:Math.max.apply(null,maps.map(function(m){ return m[n]||0; }))}; }).sort(function(a,b){ return b.max-a.max; }).slice(0,10);
+  const maxQ = Math.max.apply(null,ranked.map(function(r){ return r.max; }))||1;
+
+  let bar = '<div class="bar-card"><div class="sec-title"><i class="ti ti-chart-bar" style="font-size:15px"></i>Comparativo por producto (top 10)</div>'+leg;
   ranked.forEach(function(r){ const segs=sorted.map(function(w,i){ const q=maps[i][r.n]||0,pct=Math.round(q/maxQ*100); return '<div class="bar-seg" style="width:'+pct+'%;background:'+WK_COLORS[i%WK_COLORS.length]+';opacity:0.85"></div>'; }).join(''); bar+='<div class="bar-row"><div class="bar-lbl">'+r.n+'</div><div class="bar-track" style="gap:2px">'+segs+'</div><div class="bar-val">'+r.max+'</div></div>'; });
-  bar+='</div>';
-  let tbl='<div class="tbl-wrap"><div class="sec-title"><i class="ti ti-table" style="font-size:15px"></i>Tabla completa</div><table class="cmp-tbl"><thead><tr><th>Producto</th>';
+  bar += '</div>';
+
+  let tbl = '<div class="tbl-wrap"><div class="sec-title"><i class="ti ti-table" style="font-size:15px"></i>Tabla completa</div><table class="cmp-tbl"><thead><tr><th>Producto</th>';
   sorted.forEach(function(w,i){ tbl+='<th style="color:'+WK_COLORS[i%WK_COLORS.length]+'">'+w.week.replace('Semana ','S')+'</th>'; });
-  tbl+='<th>Tendencia</th></tr></thead><tbody>';
+  tbl += '<th>Tendencia</th></tr></thead><tbody>';
   allNames.forEach(function(n){ const vals=maps.map(function(m){ return m[n]||0; }),diff=vals[vals.length-1]-vals[0]; const tc=diff>0?'up':diff<0?'down':'same',tt=diff>0?'▲ +'+diff:diff<0?'▼ '+diff:'='; tbl+='<tr><td>'+n+'</td>'; vals.forEach(function(v,i){ tbl+='<td style="color:'+(v>0?WK_COLORS[i%WK_COLORS.length]:'#ccc')+'">'+(v||'—')+'</td>'; }); tbl+='<td class="trend-cell '+tc+'">'+tt+'</td></tr>'; });
-  tbl+='<tr style="border-top:1px solid var(--border);font-weight:600"><td>Total</td>'; totals.forEach(function(t){ tbl+='<td>'+t+'</td>'; }); tbl+='<td></td></tr></tbody></table></div>';
-  const movers=allNames.map(function(n){ return {n:n,diff:(maps[maps.length-1][n]||0)-(maps[0][n]||0)}; }).filter(function(x){ return x.diff!==0; }).sort(function(a,b){ return Math.abs(b.diff)-Math.abs(a.diff); }).slice(0,8);
-  const ups=movers.filter(function(m){ return m.diff>0; }).slice(0,4);
-  const dns=movers.filter(function(m){ return m.diff<0; }).slice(0,4);
-  let mov='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">'
-    +'<div class="bar-card" style="margin:0"><div class="sec-title" style="color:var(--coral)"><i class="ti ti-trending-up" style="font-size:15px"></i>Mayor aumento</div>'+(ups.length?ups.map(function(m){ return '<div class="hi-row"><span class="hi-nm">'+m.n+'</span><span class="up" style="font-weight:600">+'+m.diff+'</span></div>'; }).join(''):'<div style="font-size:12px;color:#aaa">Sin cambios</div>')+'</div>'
+  tbl += '<tr style="border-top:1px solid var(--border);font-weight:600"><td>Total</td>'; totals.forEach(function(t){ tbl+='<td>'+t+'</td>'; }); tbl+='<td></td></tr></tbody></table></div>';
+
+  const movers = allNames.map(function(n){ return {n:n,diff:(maps[maps.length-1][n]||0)-(maps[0][n]||0)}; }).filter(function(x){ return x.diff!==0; }).sort(function(a,b){ return Math.abs(b.diff)-Math.abs(a.diff); }).slice(0,8);
+  const ups = movers.filter(function(m){ return m.diff>0; }).slice(0,4);
+  const dns = movers.filter(function(m){ return m.diff<0; }).slice(0,4);
+  let mov = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">'
+    +'<div class="bar-card" style="margin:0"><div class="sec-title" style="color:var(--red)"><i class="ti ti-trending-up" style="font-size:15px"></i>Mayor aumento</div>'+(ups.length?ups.map(function(m){ return '<div class="hi-row"><span class="hi-nm">'+m.n+'</span><span class="up" style="font-weight:600">+'+m.diff+'</span></div>'; }).join(''):'<div style="font-size:12px;color:#aaa">Sin cambios</div>')+'</div>'
     +'<div class="bar-card" style="margin:0"><div class="sec-title" style="color:var(--green)"><i class="ti ti-trending-down" style="font-size:15px"></i>Mayor reducción</div>'+(dns.length?dns.map(function(m){ return '<div class="hi-row"><span class="hi-nm">'+m.n+'</span><span class="down" style="font-weight:600">'+m.diff+'</span></div>'; }).join(''):'<div style="font-size:12px;color:#aaa">Sin cambios</div>')+'</div>'
     +'</div>';
-  content.innerHTML=html+bar+mov+tbl;
+
+  content.innerHTML = html + bar + mov + tbl;
 };
 
 function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); },2500); }
